@@ -1,0 +1,8 @@
+#+title: Rain prediction in Australia
+
+The dataset is from [[https://www.kaggle.com/fahadmehfoooz/rain-prediction-with-90-65-accuracy][Keggle: Rain in Australia]].
+
+* TODO
+
+- [ ] Transform column =Date= to =Season=.
+- [ ] Imputation by regional media instead of global media.
