@@ -1,0 +1,75 @@
+
+\documentclass[12pt, a4paper]{article}
+
+\input{preamble}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{}
+\lhead{}
+\rfoot{Page \thepage}
+
+\title{%
+  \vspace{-10ex}
+  Proposal: Stroke Prediction
+}
+\author{%
+  Arnau Abella \\
+  Antoni Casas \\
+  \large{Universitat Polit\`ecnica de Catalunya}
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\vspace{5ex}
+
+\section{Introduction}
+\label{sec:introduction}
+
+Our problem is to \textbf{predict whether a patient is likely to get a stroke} based on
+the input parameters such as age, diseases, smoking status and so.
+
+We have chosen this problem because being able to predict stroke could prevent thousands of death per year since stroke is the second  cause of death in developed countries \cite{who}.
+
+\section{The dataset}
+\label{sec:dataset}
+
+The dataset is from \href{https://www.kaggle.com/fedesoriano/stroke-prediction-dataset}{Keggle}. The source is \textbf{confidential} since it contains personal data of patients of various hospitals.
+
+The dataset is composed by:
+
+\begin{itemize}
+  \item 12 variables (7 numerical, 5 categorical)
+  \item 5110 samples
+  \item Only attribute \textit{bmi} has missing values.
+  \item Some attributes have outliers e.g. \textit{age} and \textit{bmi}
+  \item The dataset is imbalanced ($95$ --- $5$). We need to take this into consideration when doing the analysis.
+\end{itemize}
+
+\begin{table}[H]
+\hskip-1.0cm\begin{tabular}{l|l|l}
+Name                       & Type    & Categorical Range \\ \hline
+Id                         & int64   &  \\ 
+Gender                     & object  & Male, Female, Other   \\
+Age                        & float64 & \\
+Hypertension               & int64   & 0 = no hypertension, 1 = hypertension   \\
+Heart Disease              & int64   & 0 = no hearth disease, 1 = heart disease  \\
+Ever Married               & object  & No, Yes   \\
+Work Type                  & object  & Children, Gov. job, Never Worked, Private, Self employed   \\
+Residence Type             & object  & Rural, Urban   \\
+Average Glucose Level      & float64 &   \\
+BMI (Body Mass Index)      & float64 &   \\
+Smoking Status             & object  & Formerly smoked, never smoked, smokes, unknown   \\
+Stroke                     & int64   &   \\
+\end{tabular}
+\caption{Variables description}
+\end{table}
+
+The dataset has been previously studied (see \href{https://www.kaggle.com/fedesoriano/stroke-prediction-dataset/code}{previous work}).
+
+\bibliographystyle{unsrt}
+\bibliography{refs}
+\end{document}
