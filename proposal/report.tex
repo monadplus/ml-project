@@ -37,7 +37,7 @@ We have chosen this problem because being able to predict stroke could prevent t
 \section{The dataset}
 \label{sec:dataset}
 
-The dataset is from \href{https://www.kaggle.com/fedesoriano/stroke-prediction-dataset}{Keggle}. The source is \textbf{confidential} since it contains personal data of patients of various hospitals.
+The dataset is from \href{https://www.kaggle.com/fedesoriano/stroke-prediction-dataset}{Kaggle}. The source is \textbf{confidential} since it contains personal data of patients of various hospitals.
 
 The dataset is composed by:
 
@@ -46,29 +46,36 @@ The dataset is composed by:
   \item 5110 samples
   \item Only attribute \textit{bmi} has missing values.
   \item Some attributes have outliers e.g. \textit{age} and \textit{bmi}
-  \item The dataset is imbalanced ($95$ --- $5$). We need to take this into consideration when doing the analysis.
+  \item The dataset is imbalanced ($0.95$ --- $0.05$). We need to take this into consideration when doing the analysis.
 \end{itemize}
+
+The dataset has been previously studied (see \href{https://www.kaggle.com/fedesoriano/stroke-prediction-dataset/code}{previous work}).
 
 \begin{table}[H]
 \hskip-1.0cm\begin{tabular}{l|l|l}
 Name                       & Type    & Categorical Range \\ \hline
-Id                         & int64   &  \\ 
-Gender                     & object  & Male, Female, Other   \\
-Age                        & float64 & \\
-Hypertension               & int64   & 0 = no hypertension, 1 = hypertension   \\
-Heart Disease              & int64   & 0 = no hearth disease, 1 = heart disease  \\
-Ever Married               & object  & No, Yes   \\
-Work Type                  & object  & Children, Gov. job, Never Worked, Private, Self employed   \\
-Residence Type             & object  & Rural, Urban   \\
-Average Glucose Level      & float64 &   \\
-BMI (Body Mass Index)      & float64 &   \\
-Smoking Status             & object  & Formerly smoked, never smoked, smokes, unknown   \\
-Stroke                     & int64   &   \\
+Id                         & Numerical   &  \\
+Gender                     & Categorical  & Male, Female, Other   \\
+Age                        & Numerical & \\
+Hypertension               & Binary   & 0 = no hypertension, 1 = hypertension   \\
+Heart Disease              & Binary   & 0 = no hearth disease, 1 = heart disease  \\
+Ever Married               & Binary  & No, Yes   \\
+Work Type                  & Categorical  & Children, Gov. job, Never Worked, Private, Self employed   \\
+Residence Type             & Categorical  & Rural, Urban   \\
+Average Glucose Level      & Numerical &   \\
+BMI (Body Mass Index)      & Numerical &   \\
+Smoking Status             & Categorical  & Formerly smoked, never smoked, smokes, unknown   \\
+Stroke                     & Binary   &   \\
 \end{tabular}
 \caption{Variables description}
 \end{table}
 
-The dataset has been previously studied (see \href{https://www.kaggle.com/fedesoriano/stroke-prediction-dataset/code}{previous work}).
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{describe}
+  \caption{Numerical variables description}
+  \label{fig:numerical}
+\end{figure}
 
 \bibliographystyle{unsrt}
 \bibliography{refs}
