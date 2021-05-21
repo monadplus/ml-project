@@ -4,14 +4,6 @@
 
 The dataset is from https://www.kaggle.com/fedesoriano/stroke-prediction-dataset.
 
-** Checklist
-
-- [ ] Reduce factors per categorical variable (e.g. only keep those with freq > 0.05).
-- [ ] Split training dataset:
-  - [ ] Regular
-  - [ ] MCA (~ PCA)
-- [ ] Apply SMOTE
-
 ** Resources
 
 - SMOTE example: https://www.kaggle.com/sudhakordassubeen/stroke-prediction-with-smote-techniques (also provide domain knowledge)
