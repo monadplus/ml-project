@@ -1,9 +1,17 @@
-* Stroke prediction
+* ML: Stroke Prediction
+
+Authors: Arnau Abella and Antoni Casas.
 
 ** Dataset
 
 The dataset is from https://www.kaggle.com/fedesoriano/stroke-prediction-dataset.
 
-** Resources
+** How To
 
-- SMOTE example: https://www.kaggle.com/sudhakordassubeen/stroke-prediction-with-smote-techniques (also provide domain knowledge)
+The whole dataset analysis and modeling is implemented in =stroke.ipynb=.
+The notebook was written in a way that it is easy to follow.
+Just open it and read it from top to bottom!
+
+#+begin_src sh
+$ jupyter notebook stroke.ipynb
+#+end_src
