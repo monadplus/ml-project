@@ -1,14 +1,11 @@
 .PHONY : clean cleanpdf cleandist all
 
-TARGET=report
+TARGET=main
 
-all: report.pdf clean
+all: main.pdf clean
 
-# FIXME Are all these passes necessary ?
-report.pdf: $(wildcard *.tex) $(wildcard *.bib)
-	- pdflatex -halt-on-error -shell-escape $(TARGET)
-	- bibtex  $(TARGET)
-	- pdflatex -halt-on-error -shell-escape $(TARGET)
+main.pdf: $(wildcard *.tex) $(wildcard *.bib)
+	- bibtex  bibligraphy.bib
 	pdflatex -halt-on-error -shell-escape $(TARGET)
 
 clean:
