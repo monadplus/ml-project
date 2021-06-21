@@ -32,6 +32,7 @@
 \usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
 
 \usepackage{multicol} % Required for multiple columns
+\usepackage{multirow}
 \setlength{\columnsep}{1.5em} % Slightly increase the space between columns
 \setlength{\columnseprule}{0mm} % No horizontal rule between columns
 
@@ -81,39 +82,23 @@ linewidth=2pt % Width of the border lines around content boxes
 %----------------------------------------------------------------------------------------
 
 \headerbox{Introduction}{name=introduction,column=0,span=2,row=0}{
-  Strokes are an unexpected killer and hard to predict, being the second leading cause of death globally. Therefore, the detection of segments of the population at risk could enhance the ability of hospitals and other medical teams to offer early treatments and screenings to reduce this risk. \\
+  Strokes are an unexpected \textbf{killer} and \textbf{hard to predict}, being the second leading cause of death globally. Therefore, the detection of segments of the population at risk could enhance the ability of hospitals and other medical teams to offer early treatments and screenings to reduce this risk. \\
 
-  Our goal is to predict whether or not an individual is going to suffer a stroke.
+  Our goal is to \textbf{predict whether or not an individual is going to suffer a stroke}.
 }
 
 %----------------------------------------------------------------------------------------
 %	RESULTS 1
 %----------------------------------------------------------------------------------------
 
-\headerbox{Results 1}{name=results,column=2,span=2,row=0}{
-
-\begin{multicols}{2}
-\vspace{1em}
+\headerbox{Preliminary Results}{name=results,column=2,span=2,row=0}{
 \begin{center}
-\includegraphics[width=0.8\linewidth]{Accuracies.png}
-\captionof{figure}{Figure caption}
+\includegraphics[width=0.9\linewidth]{Results-Table.png}
+\captionof{figure}{Validation scores after hyperparameters tunning}
+\label{fig:results}
 \end{center}
 
-Aliquam auctor, metus id ultrices porta, risus enim cursus sapien, quis iaculis sapien tortor sed odio. Mauris ante orci, euismod vitae tincidunt eu, porta ut neque. Aenean sapien est, viverra vel lacinia nec, venenatis eu nulla. Maecenas ut nunc nibh, et tempus libero. Aenean vitae risus ante. Pellentesque condimentum dui. Etiam sagittis purus non tellus tempor volutpat. Donec et dui non massa tristique adipiscing.
-\end{multicols}
-
-%------------------------------------------------
-
-\begin{multicols}{2}
-\vspace{1em}
-Sed fringilla tempus hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam ut elit sit amet metus lobortis consequat sit amet in libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel sem magna. Nunc at convallis urna. isus ante. Pellentesque condimentum dui. Etiam sagittis purus non tellus tempor volutpat. Donec et dui non massa tristique adipiscing. Quisque vestibulum eros eu.
-
-\begin{center}
-\includegraphics[width=0.8\linewidth]{Accuracies.png}
-\captionof{figure}{Figure caption}
-\end{center}
-
-\end{multicols}
+The results show that the best models are the ones with \textbf{higher regularization}. It seems that the issue is \textbf{severe overfitting} due to the data imbalance and the scarcity of data. In our case, the models which achieved the best results were the multi-layer perceptron, the logistic regression with $l_{2}$-penalty and the voting classifier. Finally, after hyper-parameter tunning, we have chosen the \textbf{logistic regression} which achieves the highest f1-score and recall among the bests.
 }
 
 %----------------------------------------------------------------------------------------
@@ -136,9 +121,8 @@ Sed fringilla tempus hendrerit. Vestibulum ante ipsum primis in faucibus orci lu
 \headerbox{Future Research}{name=futureresearch,column=1,span=2,aligned=references,above=bottom}{ % This block is as tall as the references block
 
 \begin{multicols}{2}
-Integer sed lectus vel mauris euismod suscipit. Praesent a est a est ultricies pellentesque. Donec tincidunt, nunc in feugiat varius, lectus lectus auctor lorem, egestas molestie risus erat ut nibh.
+  The data seems \textbf{too poor} to be able to create a good model for the minority class, however, it might be possible that there exists a transformation where, in the new space, the data is good enough to generalize with the current data. \\ Ignoring such event, the only possible work is expanding the data, via new variables recorded, or by \textbf{adding more samples}.
 
-Maecenas viverra ligula a risus blandit vel tincidunt est adipiscing. Suspendisse mollis iaculis sem, in \emph{imperdiet} orci porta vitae. Quisque id dui sed ante sollicitudin sagittis.
 \end{multicols}
 }
 
@@ -149,9 +133,9 @@ Maecenas viverra ligula a risus blandit vel tincidunt est adipiscing. Suspendiss
 \headerbox{Contact Information}{name=contact,column=3,aligned=references,above=bottom}{ % This block is as tall as the references block
 
 \begin{description}\compresslist
-\item[Web] www.university.edu/smithlab
-\item[Email] john@smith.com
-\item[Phone] +1 (000) 111 1111
+\item[Web] github.com/monadplus/ml-project
+\item[Email] arnauabella@gmail.com
+\item[Phone] +34 618 459 006
 \end{description}
 }
 
@@ -163,32 +147,17 @@ Maecenas viverra ligula a risus blandit vel tincidunt est adipiscing. Suspendiss
 
 \begin{multicols}{2}
 
-\tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=2cm, inner sep=0pt]
-\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{line} = [draw, -latex']
-\tikzstyle{cloud} = [draw, ellipse, fill=red!20, node distance=3cm, minimum height=2em]
+  \begin{center}
+  \includegraphics[width=0.9\linewidth]{rocfinak.png}
+  \captionof{figure}{ROC Curve on Test Data}
+  \label{fig:roc}
+  \end{center}
 
-\begin{tikzpicture}[node distance = 2cm, auto]
-\node [block] (init) {Initialize Model};
-\node [cloud, left of=init] (Start) {Start};
-\node [cloud, right of=init] (Start2) {Start Two};
-\node [block, below of=init] (init2) {Initialize Two};
-\node [decision, below of=init2] (End) {End};
-\path [line] (init) -- (init2);
-\path [line] (init2) -- (End);
-\path [line, dashed] (Start) -- (init);
-\path [line, dashed] (Start2) -- (init);
-\path [line, dashed] (Start2) |- (init2);
-\end{tikzpicture}
+  Out of all our models, the ones most robust to overfitting were the ones who managed to perform well on the minority class. We believe this to be a case of a lack of data, since certain spaces of the hyperplane are left either unpopulated or with so little population that boundaries cannot be established properly, leading to overfitting and poor generalization.\\
 
-%------------------------------------------------
+  Our best model was the Logistic Regression with $L_{2}$ loss, a simple linear method, but extremely hard to overfit, with an interesting ROC curve, which could be exploited to obtain the best balance between false positives and true positives, since the focus is on achieving the highest number of true positives on the minority class, since a misdiagnosis can be fatal.\\
 
-\begin{itemize}\compresslist
-\item Pellentesque eget orci eros. Fusce ultricies, tellus et pellentesque fringilla, ante massa luctus libero, quis tristique purus urna nec nibh. Phasellus fermentum rutrum elementum. Nam quis justo lectus.
-\item Vestibulum sem ante, hendrerit a gravida ac, blandit quis magna.
-\item Donec sem metus, facilisis at condimentum eget, vehicula ut massa. Morbi consequat, diam sed convallis tincidunt, arcu nunc.
-\item Nunc at convallis urna. isus ante. Pellentesque condimentum dui. Etiam sagittis purus non tellus tempor volutpat. Donec et dui non massa tristique adipiscing.
-\end{itemize}
+  % We can also see that of all the variables, those with the highest effect on stroke are, first of all and by far, age, then far behind average glucose level and bmi, with the rest of variables trailing behind. These relations might help understand strokes better.
 
 \end{multicols}
 }
@@ -199,11 +168,11 @@ Maecenas viverra ligula a risus blandit vel tincidunt est adipiscing. Suspendiss
 
 \headerbox{Materials \& Methods}{name=method,column=0,below=introduction,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
 
-  The stroke prediction dataset is composed by $11$ features: $3$ numerical and $8$ categorical. The dataset only has 5110 observations. The binary classification problem is highly imbalanced, with only a $5\%$ of the population belonging to the positive class.\\
+  The stroke prediction dataset is composed by \textbf{11 features}: $3$ numerical and $8$ categorical. The dataset only has \textbf{5110 observations}. The binary classification problem is \textbf{highly imbalanced}, with only a $5\%$ of the population belonging to the positive class.\\
 
-  To deal with the imbalance, we applied \emph{SMOTE with Tomek Links} which applies the over-sampling method SMOTE combined with the under-sampling method Tomek links. The combination of both should re-balance the dataset while avoiding the creation of noisy samples from the interpolation of outliers and inliers.\\
+  To deal with the imbalance, we applied \textbf{SMOTE} which applies the over-sampling method \emph{SMOTE} combined with the under-sampling method \emph{Tomek Links}. The combination of both should re-balance the dataset while avoiding the creation of noisy samples from the interpolation of outliers and inliers.\\
 
-  We have also explored factor analysis, in particular MCA, and dimensionality.
+  We have also explored \textbf{factor analysis}, in particular MCA, and dimensionality.\\
 
   We considered the following models:
 
@@ -216,45 +185,24 @@ Maecenas viverra ligula a risus blandit vel tincidunt est adipiscing. Suspendiss
 \item Neural Networks
 \end{itemize}
 
-  We focused on achieving the best \emph{F1-score} while keeping the \emph{recall} high.
-
+  We focused on achieving the best \emph{F1-score} while keeping a high \emph{recall}.
 }
 
 %----------------------------------------------------------------------------------------
 %	RESULTS 2
 %----------------------------------------------------------------------------------------
 
-\headerbox{Results 2}{name=results2,column=1,below=introduction,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
+\headerbox{Final Results}{name=results2,column=1,below=introduction,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
 
-Donec faucibus purus at tortor egestas eu fermentum dolor facilisis. Maecenas tempor dui eu neque fringilla rutrum. Mauris \emph{lobortis} nisl accumsan.
-
-\begin{center}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\captionof{table}{Table caption}
-\end{center}
-
-Nulla ut porttitor enim. Suspendisse venenatis dui eget eros gravida tempor. Mauris feugiat elit et augue placerat ultrices. Morbi accumsan enim nec tortor consectetur non commodo.
+We evaluate how our best model \emph{generalises} using the test data. Our optimized model achieves a \textbf{$79\%$ of true positives on the minority class} which seems to be an accurate representation of its generalization capability.
 
 \begin{center}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\captionof{table}{Table caption}
+\includegraphics[width=.7\linewidth]{LogRedResult.png}
+\captionof{figure}{Confusion Matrix on Test Data}
 \end{center}
+
+We can also see on the ROC curve (figure \ref{fig:roc}) that this model has an interesting quirk, and that's it that we \textbf{can achieve a true positive rate of 100\% on the minority class} if we also have a false positive rate of $60\%$ in the minority class, which means we can effectively never miss a possible stroke if we are willing to also deal with all the positives.
+
 }
 
 %----------------------------------------------------------------------------------------
